@@ -16,3 +16,6 @@ Database for development is H2. To access the console, go to:
 ## Test app
 - Get all users `curl http://localhost:8080/demo/all` 
 - Add user: `curl -X POST -d "name=First" -d "email=first@example.com" http://localhost:8080/demo/add`
+
+# to-do
+- 
