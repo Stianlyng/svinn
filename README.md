@@ -19,5 +19,9 @@ Database for development is H2. To access the console, go to:
 - Get all users `curl http://localhost:8080/user/all` 
 - Add user: `curl -X POST -d "name=First" -d "email=first@example.com" http://localhost:8080/user/add`
 
+## API Documentation
+- Found inspiration on this site: https://springdoc.org/v2/
+- OpenAPI description: http://localhost:8080/v3/api-docs
+- Swagger UI: http://localhost:8080/swagger-ui.html
 # to-do
 - 
