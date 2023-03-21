@@ -1,7 +1,8 @@
 package ntnu.idatt2105.stianlyng.svinn.controller;
 
-import ntnu.idatt2105.stianlyng.svinn.model.User;
-import ntnu.idatt2105.stianlyng.svinn.service.UserService;
+import ntnu.idatt2105.stianlyng.svinn.model.Demo;
+import ntnu.idatt2105.stianlyng.svinn.service.DemoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,22 +13,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(path="/demo")
-public class MainController {
-    private final UserService userService;
+public class DemoController {
+    private final DemoService demoService;
 
     @Autowired
-    public MainController(UserService userService) {
-        this.userService = userService;
+    public DemoController(DemoService demoService) {
+        this.demoService = demoService;
     }
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
-        userService.addNewUser(name, email);
+    public @ResponseBody String addNewDemo (@RequestParam String name) {
+        demoService.addNewDemo(name);
         return "Saved";
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
-        return userService.getUsers();
+    public @ResponseBody Iterable<Demo> getAllDemos() {
+        return demoService.getDemos();
     }
 }
