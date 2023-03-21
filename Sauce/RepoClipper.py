@@ -26,7 +26,13 @@ def read_files(file_paths):
         file_contents.append("\n ```")
     return file_contents
 
+####      MAIN      ####          
+                 
 directory = '/home/stian/Code/svinn'
+
+#with open(directory + '/ShortDesc.md', 'r') as f:
+#            print(f.read())
+
 extentions = ['.java', '.xml', '.properties', '.sql']
 filePaths = get_file_paths_with_extension(directory, extentions)
 
