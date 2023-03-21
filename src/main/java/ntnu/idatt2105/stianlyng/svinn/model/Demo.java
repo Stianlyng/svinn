@@ -16,8 +16,6 @@ public class Demo {
 
   private String name;
 
-  private String email;
-
   public Integer getId() {
     return id;
   }
