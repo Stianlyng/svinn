@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path="/demo2")
+@RequestMapping(path="/demo")
 public class DemoController {
     private final DemoService demoService;
 

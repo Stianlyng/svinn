@@ -14,8 +14,10 @@ Database for development is H2. To access the console, go to:
 - JDBC URL: `jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`
 
 ## Test app
-- Get all users `curl http://localhost:8080/demo/all` 
-- Add user: `curl -X POST -d "name=First" -d "email=first@example.com" http://localhost:8080/demo/add`
+- Get demo table `curl http://localhost:8080/demo/all` 
+- Add demo entry: `curl -X POST -d "name=First" http://localhost:8080/demo/add`
+- Get all users `curl http://localhost:8080/user/all` 
+- Add user: `curl -X POST -d "name=First" -d "email=first@example.com" http://localhost:8080/user/add`
 
 # to-do
 - 
