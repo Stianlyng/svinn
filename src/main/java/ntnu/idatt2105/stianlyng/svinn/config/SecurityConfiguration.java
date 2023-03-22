@@ -24,12 +24,15 @@ public class SecurityConfiguration {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
     http
         .csrf()
         .disable()
         .authorizeHttpRequests()
         .requestMatchers("/api/v1/auth/**")
           .permitAll()
+        // Allow all requests to the H2 console
+        .requestMatchers("/h2-console/**").permitAll()
         .anyRequest()
           .authenticated()
         .and()
@@ -43,6 +46,15 @@ public class SecurityConfiguration {
         .addLogoutHandler(logoutHandler)
         .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
     ;
+
+    // Disable CSRF protection for the H2 console
+    http.csrf()
+        .ignoringRequestMatchers("/h2-console/**");
+
+    // Allow iframes for the same origin (needed for the H2 console)
+    http.headers()
+        .frameOptions()
+        .sameOrigin();
 
     return http.build();
   }
