@@ -1,6 +1,5 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +30,11 @@ public class SecurityConfiguration {
         .authorizeHttpRequests()
         .requestMatchers("/api/v1/auth/**")
           .permitAll()
+        .requestMatchers("/demo/all**")
+          .permitAll()
         // Allow all requests to the H2 console
-        .requestMatchers("/h2-console/**").permitAll()
+        .requestMatchers("/h2-console/**")
+          .permitAll()
         .anyRequest()
           .authenticated()
         .and()
@@ -58,4 +60,6 @@ public class SecurityConfiguration {
 
     return http.build();
   }
+  
+  
 }
