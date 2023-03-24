@@ -7,6 +7,7 @@ I decided to give it a try anyways, and i am glad i did. I have learned a lot du
 
 ## ER
 ![ER](/assets/img/ER.png?raw=true)
+
 ## Run
 `mvn spring-boot:run`
 
@@ -15,11 +16,9 @@ Database for development is H2. To access the console, go to:
 - `http://localhost:8080/h2-console`
 - JDBC URL: `jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`
 
-## Test app
+## Demo
 - Get demo table `curl http://localhost:8080/demo/all` 
 - Add demo entry: `curl -X POST -d "name=First" http://localhost:8080/demo/add`
-- Get all users `curl http://localhost:8080/user/all` 
-- Add user: `curl -X POST -d "name=First" -d "email=first@example.com" http://localhost:8080/user/add`
 
 ## API Documentation
 - Found inspiration on this site: https://springdoc.org/v2/
