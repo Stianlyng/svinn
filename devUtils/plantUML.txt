@@ -1,0 +1,64 @@
+
+@startuml
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define foreign_key(x) <i>x</i>
+
+Table(user, "User") {
+  primary_key(id)
+  firstname
+  lastname
+  email
+  password
+  role
+}
+
+Table(category, "Category") {
+  primary_key(id)
+  name
+  description
+}
+
+Table(location, "Location") {
+  primary_key(id)
+  name
+  latitude
+  longitude
+}
+
+Table(item, "Item") {
+  primary_key(id)
+  name
+  description
+  price
+  date_added
+  date_modified
+  foreign_key(category_id)
+  foreign_key(location_id)
+  foreign_key(user_id)
+}
+
+Table(bookmark, "Bookmark") {
+  primary_key(id)
+  foreign_key(user_id)
+  foreign_key(item_id)
+}
+
+Table(message, "Message") {
+  primary_key(id)
+  content
+  timestamp
+  foreign_key(sender_id)
+  foreign_key(recipient_id)
+  foreign_key(item_id)
+}
+
+user "1" -- "0..*" item : has
+user "1" -- "0..*" message : sender
+user "1" -- "0..*" message : recipient
+user "1" -- "0..*" bookmark : has
+category "1" -- "0..*" item : has
+location "1" -- "0..*" item : has
+item "1" -- "0..*" message : about
+item "1" -- "0..*" bookmark : bookmarked
+@enduml
