@@ -1,4 +1,3 @@
-Here's a proposed database schema for the e-commerce marketplace application based on the provided requirements. The schema includes tables for users, items, categories, locations, bookmarks, and messages, as well as their relationships.
 
     Users
         id (Primary Key)
@@ -53,5 +52,3 @@ Relationships
     Locations (1) - (Many) Items: One location can have many items.
     Items (1) - (Many) Bookmarks: One item can be bookmarked by many users.
     Items (1) - (Many) Messages: One item can have many associated messages.
-
-With this schema, you can store and retrieve data required for the various features of the application, such as user registration, item listings, filtering, searching, bookmarking, and messaging.
