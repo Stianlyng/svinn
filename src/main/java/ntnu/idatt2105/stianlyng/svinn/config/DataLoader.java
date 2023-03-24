@@ -2,9 +2,10 @@ package ntnu.idatt2105.stianlyng.svinn.config;
 
 // Entities
 import ntnu.idatt2105.stianlyng.svinn.entities.Category;
-
+import ntnu.idatt2105.stianlyng.svinn.entities.Location;
 // Repositories
 import ntnu.idatt2105.stianlyng.svinn.repositories.CategoryRepository;
+import ntnu.idatt2105.stianlyng.svinn.repositories.LocationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,9 +22,13 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private LocationRepository locationRepository;
+
     @Override
     public void run(String... args) throws Exception {
         loadCategories();
+        loadLocations();
     }
 
     private void loadCategories() {
@@ -33,7 +38,13 @@ public class DataLoader implements CommandLineRunner {
                 new Category(null, "Home & Garden", "Home improvement and gardening items"),
                 new Category(null, "Sports & Outdoors", "Sporting goods and outdoor equipment")
         );
-
         categoryRepository.saveAll(categories);
+    }
+    
+    private void loadLocations() {
+        List<Location> locations = Arrays.asList(
+                new Location(null, "Trondheim", 2.2, 3.2)
+        );
+        locationRepository.saveAll(locations);
     }
 }
