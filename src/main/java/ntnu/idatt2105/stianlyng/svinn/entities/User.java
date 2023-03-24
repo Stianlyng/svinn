@@ -1,4 +1,4 @@
-package ntnu.idatt2105.stianlyng.svinn.user;
+package ntnu.idatt2105.stianlyng.svinn.entities;
 
 import ntnu.idatt2105.stianlyng.svinn.token.Token;
 import jakarta.persistence.Entity;

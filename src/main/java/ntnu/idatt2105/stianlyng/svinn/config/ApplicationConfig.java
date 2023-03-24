@@ -1,7 +1,8 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import ntnu.idatt2105.stianlyng.svinn.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import ntnu.idatt2105.stianlyng.svinn.repositories.UserRepository;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
