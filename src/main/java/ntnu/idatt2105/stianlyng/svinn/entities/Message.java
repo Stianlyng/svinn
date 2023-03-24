@@ -27,7 +27,7 @@ public class Message {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String content;
-  private LocalDateTime created_at;
+  private LocalDateTime createdAt;
 
   @ManyToOne
   @JoinColumn(name = "sender_id", referencedColumnName = "id")

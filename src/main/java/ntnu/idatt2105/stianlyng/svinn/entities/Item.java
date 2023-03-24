@@ -27,11 +27,11 @@ public class Item {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String brief_description;
-  private String full_description;
+  private String briefDescription;
+  private String fullDescription;
   private double price;
-  private LocalDateTime created_at;
-  private LocalDateTime updated_at;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
   @ManyToOne
   @JoinColumn(name = "category_id", referencedColumnName = "id")
