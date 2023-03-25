@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import ListingFeed from '../components/ListingFeed.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <ListingFeed />
   </main>
 </template>
