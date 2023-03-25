@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import { useAuthStore } from '../stores/authStore';
+import RegisterView from "../views/RegisterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,26 +35,13 @@ const router = createRouter({
       name: 'my-listings',
       component: () => import('../views/MyListingsView.vue'),
     },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView,
+    },
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  const isAuthenticated = !!authStore.token;
-  const protectedRoutes = [
-    'sell',
-    'bookmarks',
-    'messages',
-    'profile',
-    'my-listings',
-  ];
-
-  if (protectedRoutes.includes(to.name) && !isAuthenticated) {
-    // Redirect to the login or register page if the user is not authenticated
-    next({ name: 'home' });
-  } else {
-    next();
-  }
-});
 
 export default router;

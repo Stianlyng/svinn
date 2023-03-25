@@ -17,6 +17,7 @@ import Heading from './components/Heading.vue'
         <RouterLink to="/messages">chat</RouterLink>
         <RouterLink to="/my-listings">my stuff</RouterLink>
         <RouterLink to="/profile">profile</RouterLink>
+        <RouterLink to="/register">register</RouterLink>
       </nav>
     </div>
   </header>
