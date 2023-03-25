@@ -1,6 +1,5 @@
 package ntnu.idatt2105.stianlyng.svinn.token;
 
-import ntnu.idatt2105.stianlyng.svinn.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ntnu.idatt2105.stianlyng.svinn.entities.User;
 
 @Data
 @Builder

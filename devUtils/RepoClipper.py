@@ -28,7 +28,7 @@ def read_files(file_paths):
 
 ####      MAIN      ####          
                  
-directory = '/home/stian/Code/svinn'
+directory = '/home/stian/code/svinn'
 
 #with open(directory + '/ShortDesc.md', 'r') as f:
 #            print(f.read())
@@ -41,7 +41,7 @@ print(f"# This is some relevant files from my repo:")
 for i in filePaths:
     print(i)
 
-fileContents = read_files(filePaths)
+#fileContents = read_files(filePaths)
 
-for i in fileContents:
-    print(i)
+#for i in fileContents:
+#    print(i)

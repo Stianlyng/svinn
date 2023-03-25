@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ntnu.idatt2105.stianlyng.svinn.user.User;
 
 @Data
 @Builder

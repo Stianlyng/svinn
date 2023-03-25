@@ -1,6 +1,11 @@
-package ntnu.idatt2105.stianlyng.svinn.auth;
+package ntnu.idatt2105.stianlyng.svinn.controllers;
 
 import lombok.RequiredArgsConstructor;
+import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationRequest;
+import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationResponse;
+import ntnu.idatt2105.stianlyng.svinn.auth.RegisterRequest;
+import ntnu.idatt2105.stianlyng.svinn.services.AuthenticationService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

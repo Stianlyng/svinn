@@ -6,16 +6,15 @@ import ntnu.idatt2105.stianlyng.svinn.entities.Item;
 import ntnu.idatt2105.stianlyng.svinn.entities.Location;
 import ntnu.idatt2105.stianlyng.svinn.entities.Bookmark;
 import ntnu.idatt2105.stianlyng.svinn.entities.Message;
-import ntnu.idatt2105.stianlyng.svinn.user.Role;
-import ntnu.idatt2105.stianlyng.svinn.user.User;
-
+import ntnu.idatt2105.stianlyng.svinn.entities.Role;
+import ntnu.idatt2105.stianlyng.svinn.entities.User;
 // Repositories
 import ntnu.idatt2105.stianlyng.svinn.repositories.CategoryRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.ItemRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.LocationRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.MessageRepository;
+import ntnu.idatt2105.stianlyng.svinn.repositories.UserRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.BookmarkRepository;
-import ntnu.idatt2105.stianlyng.svinn.user.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

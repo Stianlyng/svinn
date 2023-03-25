@@ -1,6 +1,5 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import ntnu.idatt2105.stianlyng.svinn.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,6 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Security;
 import lombok.RequiredArgsConstructor;
+import ntnu.idatt2105.stianlyng.svinn.repositories.TokenRepository;
+
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

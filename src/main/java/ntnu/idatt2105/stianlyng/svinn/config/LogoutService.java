@@ -1,9 +1,10 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import ntnu.idatt2105.stianlyng.svinn.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import ntnu.idatt2105.stianlyng.svinn.repositories.TokenRepository;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
