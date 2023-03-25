@@ -30,3 +30,8 @@ Database for development is H2. To access the console, go to:
 - [ ] fix swagger
 - [ ] CI/CD
 - [ ] database i docker
+
+# Frontend
+`npm install`
+`npm run format`
+`npm run dev`
