@@ -12,7 +12,11 @@ import Heading from './components/Heading.vue'
 
       <nav>
         <RouterLink to="/">feed</RouterLink>
-        <RouterLink to="/about">about</RouterLink>
+        <RouterLink to="/sell">sell</RouterLink>
+        <RouterLink to="/bookmarks">favs</RouterLink>
+        <RouterLink to="/messages">chat</RouterLink>
+        <RouterLink to="/my-listings">my stuff</RouterLink>
+        <RouterLink to="/profile">profile</RouterLink>
       </nav>
     </div>
   </header>
