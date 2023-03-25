@@ -13,10 +13,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration {
+public class SecurityConfiguration implements WebMvcConfigurer {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
@@ -36,6 +39,8 @@ public class SecurityConfiguration {
           .permitAll()
         .requestMatchers("/v3/api-docs")
           .permitAll()
+        .requestMatchers("/api/v1/items/**")
+          .permitAll()
         .anyRequest()
           .authenticated()
         .and()
@@ -51,5 +56,14 @@ public class SecurityConfiguration {
     ;
 
     return http.build();
+  }
+
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+      registry.addMapping("/**")
+              .allowedOrigins("http://localhost:5173") 
+              .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
+              .allowedHeaders("*")
+              .allowCredentials(true);
   }
 }
