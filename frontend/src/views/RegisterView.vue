@@ -24,9 +24,11 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
+import { defineComponent } from "vue";
+//import axios from "axios";
+import axios from "@/axiosInstance";
 
-export default {
+export default defineComponent({
   name: "RegisterView",
   data() {
     return {
@@ -39,22 +41,28 @@ export default {
   methods: {
     async register() {
       try {
-        const response = await axios.post("http://localhost:8080/api/v1/auth/register", {
+        const response = await axios.post("api/v1/auth/register", {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
           password: this.password,
         });
 
-        // Handle successful registration (e.g., show a success message or redirect)
+        // Handle successful registration
         console.log("Registration successful:", response.data);
+
+        // Store the JWT token in sessionStorage
+        sessionStorage.setItem("jwtToken", response.data.token);
+
+        // Redirect the user to the home page (or any other page)
+        this.$router.push({ name: "home" });
       } catch (error) {
         // Handle registration errors (e.g., show an error message)
         console.error("Registration failed:", (error as Error).message);
       }
     },
   },
-};
+});
 </script>
 
 <style>
