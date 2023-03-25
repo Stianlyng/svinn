@@ -77,7 +77,7 @@ public class DataLoader implements CommandLineRunner {
 
     private void loadUsers() {
         List<User> users = Arrays.asList(
-                new User(null, "John", "Doe", "john.doe@example.com", "password", Role.USER, null),
+                new User(null, "Stian", "Lyng", "a@a.a", "aaaa", Role.USER, null),
                 new User(null, "Jane", "Doe", "jane.doe@example.com", "password", Role.USER, null)
         );
         userRepository.saveAll(users);

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.security.Security;
 import lombok.RequiredArgsConstructor;
 import ntnu.idatt2105.stianlyng.svinn.repositories.TokenRepository;
+import ntnu.idatt2105.stianlyng.svinn.services.JwtService;
 
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

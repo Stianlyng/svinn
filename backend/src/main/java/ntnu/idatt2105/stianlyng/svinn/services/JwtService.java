@@ -1,4 +1,4 @@
-package ntnu.idatt2105.stianlyng.svinn.config;
+package ntnu.idatt2105.stianlyng.svinn.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

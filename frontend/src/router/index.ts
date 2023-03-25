@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import LoginView from "../views/LoginView.vue";
+import LogoutView from '../views/LogoutView.vue'; // Import the LogoutView component
 
+//todo; hide/show routes based on auth
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,6 +15,8 @@ const router = createRouter({
     { path: "/profile", name: "profile", component: () => import("../views/ProfileView.vue"), meta: { requiresAuth: true } },
     { path: "/my-listings", name: "my-listings", component: () => import("../views/MyListingsView.vue"), meta: { requiresAuth: true } },
     { path: "/register", name: "register", component: RegisterView },
+    { path: "/login", name: "login", component: LoginView },
+    { path: '/logout', name: 'logout', component: LogoutView }, // Add the LogoutView component here
   ],
 });
 

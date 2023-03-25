@@ -3,7 +3,6 @@ package ntnu.idatt2105.stianlyng.svinn.services;
 import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationRequest;
 import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationResponse;
 import ntnu.idatt2105.stianlyng.svinn.auth.RegisterRequest;
-import ntnu.idatt2105.stianlyng.svinn.config.JwtService;
 import ntnu.idatt2105.stianlyng.svinn.entities.Role;
 import ntnu.idatt2105.stianlyng.svinn.entities.User;
 import ntnu.idatt2105.stianlyng.svinn.repositories.TokenRepository;
@@ -79,4 +78,6 @@ public class AuthenticationService {
     });
     tokenRepository.saveAll(validUserTokens);
   }
+  
+ 
 }

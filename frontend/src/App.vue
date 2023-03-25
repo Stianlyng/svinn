@@ -1,29 +1,43 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Heading from './components/Heading.vue'
+
+
+const isAuthenticated = sessionStorage.getItem("jwtToken");
+
+const showAuthLinks = !isAuthenticated;
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <Heading msg="Svinn - reduce waste" />
 
       <nav>
         <RouterLink to="/">feed</RouterLink>
-        <RouterLink to="/sell">sell</RouterLink>
-        <RouterLink to="/bookmarks">favs</RouterLink>
-        <RouterLink to="/messages">chat</RouterLink>
-        <RouterLink to="/my-listings">my stuff</RouterLink>
-        <RouterLink to="/profile">profile</RouterLink>
-        <RouterLink to="/register">register</RouterLink>
+        
+        <template v-if="showAuthLinks">
+          <RouterLink to="/register">register</RouterLink>
+          <RouterLink to="/login">login</RouterLink>
+        </template>
+
+        <template v-else>
+          <RouterLink to="/sell">sell</RouterLink>
+          <RouterLink to="/bookmarks">favs</RouterLink>
+          <RouterLink to="/messages">chat</RouterLink>
+          <RouterLink to="/my-listings">my stuff</RouterLink>
+          <RouterLink to="/profile">profile</RouterLink>
+          <RouterLink to="/logout">logout</RouterLink>
+        </template>
+        
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+
 
 <style scoped>
 header {
