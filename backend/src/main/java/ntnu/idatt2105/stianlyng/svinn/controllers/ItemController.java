@@ -1,25 +1,14 @@
 package ntnu.idatt2105.stianlyng.svinn.controllers;
 
-import ntnu.idatt2105.stianlyng.svinn.DTO.CreateItemDTO;
 import ntnu.idatt2105.stianlyng.svinn.DTO.ItemRequestDTO;
-import ntnu.idatt2105.stianlyng.svinn.entities.Category;
 import ntnu.idatt2105.stianlyng.svinn.entities.Item;
-import ntnu.idatt2105.stianlyng.svinn.entities.Location;
-import ntnu.idatt2105.stianlyng.svinn.entities.Role;
-import ntnu.idatt2105.stianlyng.svinn.entities.User;
-import ntnu.idatt2105.stianlyng.svinn.repositories.CategoryRepository;
-import ntnu.idatt2105.stianlyng.svinn.repositories.LocationRepository;
-import ntnu.idatt2105.stianlyng.svinn.repositories.UserRepository;
 import ntnu.idatt2105.stianlyng.svinn.services.ItemService;
-import ntnu.idatt2105.stianlyng.svinn.services.JwtService;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,18 +17,6 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
-    
-    //@Autowired
-    //private JwtService jwtService;
-
-    //@Autowired
-    //private LocationRepository locationRepository;
-
-    //@Autowired
-    //private UserRepository userRepository;
-
-    //@Autowired
-    //private CategoryRepository categoryRepository;
     
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody ItemRequestDTO itemRequest) {
@@ -52,12 +29,19 @@ public class ItemController {
         List<Item> items = itemService.getAllItems();
         return ResponseEntity.ok(items);
     }
+    
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItem(@PathVariable Integer id) {
+        Item item = itemService.getItem(id);
+        return ResponseEntity.ok(item);
+    }
 
-    //@DeleteMapping("/{itemId}")
-    //public ResponseEntity<Void> deleteItem(@PathVariable Integer itemId) {
-    //    itemService.deleteItem(itemId);
-    //    return ResponseEntity.noContent().build();
-    //}
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<Void> deleteItem(@PathVariable Integer itemId) {
+        itemService.deleteItem(itemId);
+        return ResponseEntity.noContent().build();
+    }
 
     //@PutMapping("/{itemId}")
     //public ResponseEntity<Item> updateItem(@PathVariable Integer itemId, @RequestBody Item updatedItem) {

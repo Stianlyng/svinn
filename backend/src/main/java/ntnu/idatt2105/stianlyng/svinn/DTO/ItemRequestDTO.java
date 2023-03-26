@@ -14,6 +14,4 @@ public class ItemRequestDTO {
     private double price;
     private Integer categoryId;
     private Integer locationId;
-    private Integer userId;
-
 }

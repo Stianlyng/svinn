@@ -9,7 +9,6 @@ import ntnu.idatt2105.stianlyng.svinn.entities.User;
 import ntnu.idatt2105.stianlyng.svinn.repositories.CategoryRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.ItemRepository;
 import ntnu.idatt2105.stianlyng.svinn.repositories.LocationRepository;
-import ntnu.idatt2105.stianlyng.svinn.repositories.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,17 +24,16 @@ public class ItemService {
     private ItemRepository itemRepository;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
     private LocationRepository locationRepository;
+    
+    @Autowired
+    private UserService userService;
 
     public Item createItem(ItemRequestDTO itemRequest) {
-        User user = userRepository.findById(itemRequest.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userService.getAuthenticatedUser();
 
         Category category = categoryRepository.findById(itemRequest.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
@@ -56,17 +54,36 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    //public Item createItem(Item item) {
-    //    return itemRepository.save(item);
-    //}
+    //todo; make Optional<Item> instead of Item??
+    public Item getItem(Integer itemId) {
+        return itemRepository.findById(itemId)
+                .orElseThrow(() -> new RuntimeException("Item not found"));
+    }
 
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
 
+    
+    
     public void deleteItem(Integer itemId) {
-        itemRepository.deleteById(itemId);
+    Optional<Item> optionalItem = itemRepository.findById(itemId);
+
+    if (optionalItem.isPresent()) {
+        Item item = optionalItem.get();
+        User user = userService.getAuthenticatedUser();
+
+        if (item.getUser().getId().equals(user.getId())) {
+            itemRepository.deleteById(itemId);
+        } else {
+            throw new RuntimeException("You are not authorized to delete this item");
+        }
+    } else {
+            throw new RuntimeException("Item not found with id: " + itemId);
     }
+    }
+
+
 
     public Item updateItem(Integer itemId, Item updatedItem) {
         Item item = itemRepository.findById(itemId)
