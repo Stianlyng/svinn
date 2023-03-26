@@ -18,12 +18,20 @@ locBody = { "name": "Molde", "description": "Fin plass!", "latitude": "2.2", "lo
 locUpdBody = { "name": "Finland", "description": "heavy metal", "latitude": "2.2", "longtitude": "4.4" }
 
 itemBody = {
-    "title": "Awesome Bike",
-    "description": "A really cool bike!",
-    "price": 300,
-    "categoryId": 1,
-    "locationId": 1,
-    "userId": 1
+    "briefDescription": "Example Item",
+    "fullDescription": "This is an example item.",
+    "price": 100,
+    "createdAt": "2023-03-26T10:00:00",
+    "updatedAt": "2023-03-26T10:00:00",
+    "category": {
+        "id": 1
+    },
+    "location": {
+        "id": 1
+    },
+    "user": {
+        "id": 1
+    }
 }
 
 bookmarkBody = {
@@ -37,6 +45,10 @@ messageBody = {
     "senderId": 1,
     "receiverId": 2
 }
+
+
+
+
 
 ## REQUESTS
 
@@ -72,33 +84,32 @@ def addMessage(): return requests.post("http://localhost:8080/api/v1/messages", 
 # Token
 print(f"Token:\n{token}\n")
 
-# Categories
-print(f"{'x'*50}\nx\nx   CATEGORY\nx\n{'x'*50}\n")
-print(f"Categories:\n{categories()}\n")
-print(f"Add category:\n{addCategory()}\n")
-print(f"Delete category 1:\n{deleteCategory(categories()[0]['id'])}\n")
-print(f"The first category:\n{categories()[0]}\n")
-print(f"Update category:\n{updateCategory(int(categories()[0]['id']))}\n")
-
-# Locations
-print(f"{'x'*50}\nx\nx   LOCATION\nx\n{'x'*50}\n")
-print(f"Locations:\n{locations()}\n")
-print(f"Add location:\n{addLocation()}\n")
-print(f"Delete location:\n{deleteLocation(locations()[0]['id'])}\n")
-print(f"The first location:\n{locations()[0]}\n")
-print(f"Update location:\n{updateLocation(int(locations()[0]['id']))}\n")
+## Categories
+#print(f"{'x'*50}\nx\nx   CATEGORY\nx\n{'x'*50}\n")
+#print(f"Categories:\n{categories()}\n")
+#print(f"Add category:\n{addCategory()}\n")
+#print(f"Delete category 1:\n{deleteCategory(categories()[0]['id'])}\n")
+#print(f"The first category:\n{categories()[0]}\n")
+#print(f"Update category:\n{updateCategory(int(categories()[0]['id']))}\n")
+#
+## Locations
+#print(f"{'x'*50}\nx\nx   LOCATION\nx\n{'x'*50}\n")
+#print(f"Locations:\n{locations()}\n")
+#print(f"Add location:\n{addLocation()}\n")
+#print(f"Delete location:\n{deleteLocation(locations()[0]['id'])}\n")
+#print(f"The first location:\n{locations()[0]}\n")
+#print(f"Update location:\n{updateLocation(int(locations()[0]['id']))}\n")
 
 # Items
 print(f"{'x'*50}\nx\nx   ITEM\nx\n{'x'*50}\n")
-print(f"Items:\n{items()}\n")
+print(f"Items:\n{items()[-1]}\n")
 print(f"Add item:\n{addItem()}\n")
-
-# Bookmarks
-print(f"{'x'*50}\nx\nx   BOOKMARK\nx\n{'x'*50}\n")
-print(f"Bookmarks:\n{bookmarks()}\n")
-print(f"Add bookmark:\n{addBookmark()}\n")
-
-# Messages
-print(f"{'x'*50}\nx\nx   MESSAGE\nx\n{'x'*50}\n")
-print(f"Messages:\n{messages()}\n")
-print(f"Add message:\n{addMessage()}\n")
+## Bookmarks
+#print(f"{'x'*50}\nx\nx   BOOKMARK\nx\n{'x'*50}\n")
+#print(f"Bookmarks:\n{bookmarks()}\n")
+#print(f"Add bookmark:\n{addBookmark()}\n")
+#
+## Messages
+#print(f"{'x'*50}\nx\nx   MESSAGE\nx\n{'x'*50}\n")
+#print(f"Messages:\n{messages()}\n")
+#print(f"Add message:\n{addMessage()}\n")

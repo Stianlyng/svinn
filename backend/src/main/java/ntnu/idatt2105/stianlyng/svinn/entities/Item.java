@@ -1,4 +1,3 @@
-
 package ntnu.idatt2105.stianlyng.svinn.entities;
 
 import jakarta.persistence.Entity;

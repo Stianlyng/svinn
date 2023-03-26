@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import ListingItem from './ListingItem.vue'
-import axios from 'axios'
+import axios from 'axios';
 
 interface Category {
   id: number;
@@ -57,41 +56,40 @@ onMounted(async () => {
 </script>
 
 <template>
-
-  <ListingItem>
-      <ul class="listCard" v-for="item in items" :key="item.id">
-        <li> Item Brief Description: {{ item.briefDescription }}</li>
-        <li> Item Full Description: {{ item.fullDescription }}</li>
-        <li> Item Price: {{ item.price }}</li>
-        <li> Item Created At: {{ item.createdAt }}</li>
-        <li> Item Updated At: {{ item.updatedAt }}</li>
-        <li> Item Category: {{ item.category.name }}</li>
-        <li> Item Location: {{ item.location.name }}</li>
-        <li> Item User: {{ item.user.firstname }} {{ item.user.lastname }}</li>
-        <li> Item User Email: {{ item.user.email }}</li>
-        <li> Item User Role: {{ item.user.role }}</li>
-        <li> Item User Enabled: {{ item.user.enabled }}</li>
-        <li> Item User Username: {{ item.user.username }}</li>
-        <li> Item User Authorities: {{ item.user.authorities }}</li>
-        <li> Item User Account Non Expired: {{ item.user.accountNonExpired }}</li>
-        <li> Item User Account Non Locked: {{ item.user.accountNonLocked }}</li>
-        <li> Item User Credentials Non Expired: {{ item.user.credentialsNonExpired }}</li>
-        <li> Item User Tokens: {{ item.user.tokens }}</li>
-        <li> Item User Password: {{ item.user.password }}</li>
-        <li> Item User ID: {{ item.user.id }}</li>
-        <li> Item Location ID: {{ item.location.id }}</li>
-        <li> Item Location Name: {{ item.location.name }}</li>
-        <li> Item Location Latitude: {{ item.location.latitude }}</li>
-        <li> Item Location Longitude: {{ item.location.longitude }}</li>
-        <li> Item Category ID: {{ item.category.id }}</li>
-        <li> Item Category Name: {{ item.category.name }}</li>
-        <li> Item Category Description: {{ item.category.description }}</li>
-        <li> Item ID: {{ item.id }}</li>
-      </ul>
-  </ListingItem>
-
+  <div>
+    <ul class="listCard" v-for="item in items" :key="item.id">
+      <li> Item Brief Description: {{ item.briefDescription }}</li>
+      <li> Item Full Description: {{ item.fullDescription }}</li>
+      <li> Item Price: {{ item.price }}</li>
+      <li> Item Created At: {{ item.createdAt }}</li>
+      <li> Item Updated At: {{ item.updatedAt }}</li>
+      <li> Item Category: {{ item.category.name }}</li>
+      <li> Item Location: {{ item.location.name }}</li>
+      <li> Item User: {{ item.user.firstname }} {{ item.user.lastname }}</li>
+      <li> Item User Email: {{ item.user.email }}</li>
+      <li> Item User Role: {{ item.user.role }}</li>
+      <li> Item User Enabled: {{ item.user.enabled }}</li>
+      <li> Item User Username: {{ item.user.username }}</li>
+      <li> Item User Authorities: {{ item.user.authorities }}</li>
+      <li> Item User Account Non Expired: {{ item.user.accountNonExpired }}</li>
+      <li> Item User Account Non Locked: {{ item.user.accountNonLocked }}</li>
+      <li> Item User Credentials Non Expired: {{ item.user.credentialsNonExpired }}</li>
+      <li> Item User Tokens: {{ item.user.tokens }}</li>
+      <li> Item User Password: {{ item.user.password }}</li>
+      <li> Item User ID: {{ item.user.id }}</li>
+      <li> Item Location ID: {{ item.location.id }}</li>
+      <li> Item Location Name: {{ item.location.name }}</li>
+      <li> Item Location Latitude: {{ item.location.latitude }}</li>
+      <li> Item Location Longitude: {{ item.location.longitude }}</li>
+      <li> Item Category ID: {{ item.category.id }}</li>
+      <li> Item Category Name: {{ item.category.name }}</li>
+      <li> Item Category Description: {{ item.category.description }}</li>
+      <li> Item ID: {{ item.id }}</li>
+    </ul>
+  </div>
 </template>
 
+  padding: 
 <style scoped>
 .listCard {
   padding: 20px;

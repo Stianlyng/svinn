@@ -40,4 +40,13 @@ public class ItemService {
     
         return itemRepository.save(item);
     }
+    
+    public List<Item> getAllItemsByLoggedInUser(Long userId) {
+        return itemRepository.findByUserId(userId);
+    }
+    
+    public List<Item> getAllItemsByEmail(String email) {
+        return itemRepository.findByEmail(email);
+    }
+
 }
