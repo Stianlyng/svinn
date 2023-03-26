@@ -50,11 +50,11 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         loadCategories();
-        loadLocations();
-        loadUsers();
-        loadItems();
-        loadBookmarks();
-        loadMessages();
+        //loadLocations();
+        //loadUsers();
+        //loadItems();
+        //loadBookmarks();
+        //loadMessages();
     }
 
 

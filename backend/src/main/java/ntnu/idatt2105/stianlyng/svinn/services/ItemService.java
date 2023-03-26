@@ -1,9 +1,13 @@
 package ntnu.idatt2105.stianlyng.svinn.services;
 
+
 import ntnu.idatt2105.stianlyng.svinn.entities.Item;
+import ntnu.idatt2105.stianlyng.svinn.entities.User;
 import ntnu.idatt2105.stianlyng.svinn.repositories.ItemRepository;
+import ntnu.idatt2105.stianlyng.svinn.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,9 @@ public class ItemService {
 
     @Autowired
     private ItemRepository itemRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     public Item createItem(Item item) {
         return itemRepository.save(item);

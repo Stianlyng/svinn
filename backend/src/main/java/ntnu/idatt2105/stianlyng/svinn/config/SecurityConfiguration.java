@@ -1,6 +1,5 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +40,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
         .requestMatchers("/api/v1/items/**")
           .permitAll()
         .anyRequest()
-          .authenticated()
+         .authenticated()
         .and()
           .sessionManagement()
           .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
