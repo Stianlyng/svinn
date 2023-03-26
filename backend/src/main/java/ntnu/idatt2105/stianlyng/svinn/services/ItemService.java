@@ -65,7 +65,6 @@ public class ItemService {
     }
 
     
-    
     public void deleteItem(Integer itemId) {
     Optional<Item> optionalItem = itemRepository.findById(itemId);
 
@@ -83,8 +82,26 @@ public class ItemService {
     }
     }
 
-
-
+    public Item updateItem(Integer itemId, ItemRequestDTO itemRequest) {
+        Item existingItem = getItem(itemId); 
+    
+        Category category = categoryRepository.findById(itemRequest.getCategoryId())
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+    
+        Location location = locationRepository.findById(itemRequest.getLocationId())
+                .orElseThrow(() -> new RuntimeException("Location not found"));
+    
+        existingItem.setBriefDescription(itemRequest.getBriefDescription());
+        existingItem.setFullDescription(itemRequest.getFullDescription());
+        existingItem.setPrice(itemRequest.getPrice());
+        existingItem.setCategory(category);
+        existingItem.setLocation(location);
+        existingItem.setUpdatedAt(LocalDateTime.now());
+    
+        return itemRepository.save(existingItem);
+    }
+    
+    /*
     public Item updateItem(Integer itemId, Item updatedItem) {
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(() -> new RuntimeException("Item not found"));
@@ -99,7 +116,8 @@ public class ItemService {
     
         return itemRepository.save(item);
     }
-    
+     */
+
     public List<Item> getAllItemsByLoggedInUser(Long userId) {
         return itemRepository.findByUserId(userId);
     }

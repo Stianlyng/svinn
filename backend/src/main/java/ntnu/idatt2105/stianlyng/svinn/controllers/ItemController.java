@@ -18,6 +18,12 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
     
+    /**
+     * Creates a new item
+     * 
+     * @param itemRequest
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody ItemRequestDTO itemRequest) {
         Item newItem = itemService.createItem(itemRequest);
@@ -29,7 +35,6 @@ public class ItemController {
         List<Item> items = itemService.getAllItems();
         return ResponseEntity.ok(items);
     }
-    
     
     @GetMapping("/{id}")
     public ResponseEntity<Item> getItem(@PathVariable Integer id) {
@@ -43,21 +48,12 @@ public class ItemController {
         return ResponseEntity.noContent().build();
     }
 
-    //@PutMapping("/{itemId}")
-    //public ResponseEntity<Item> updateItem(@PathVariable Integer itemId, @RequestBody Item updatedItem) {
-    //    Item item = itemService.updateItem(itemId, updatedItem);
-    //    return ResponseEntity.ok(item);
-    //}
-    //
-    //@GetMapping("/user")
-    //public ResponseEntity<List<Item>> getAllItemsByLoggedInUser(@RequestHeader("Authorization") String authHeader) {
-    //    String token = authHeader.replace("Bearer ", "");
-    //    System.out.println(token);
-    //    String email = jwtService.extractUsername(token); // Assuming email is used as the username
-    //    System.out.println(email);
-    //    
-    //    List<Item> items = itemService.getAllItemsByEmail("a@a.a");
-    //    return ResponseEntity.ok(items);
-    //}
+
+    //todo; consider adding a child that extends ItemRequestDTO, and add the id there..
+    @PutMapping("/{itemId}")
+    public ResponseEntity<Item> updateItem(@PathVariable Integer itemId, @RequestBody ItemRequestDTO itemRequest) {
+        Item updatedItem = itemService.updateItem(itemId, itemRequest);
+        return ResponseEntity.ok(updatedItem);
+    }
     
 }
