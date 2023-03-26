@@ -5,7 +5,7 @@
         <h5 class="card-title">{{ item['briefDescription'] }}</h5>
         <p class="card-text">{{ item['fullDescription'] }}</p>
         <p class="card-text">
-          <strong>Price:</strong> ${{ item['price'].toFixed(2) }}
+          <strong>Price:</strong> ${{ item['price'] }}
         </p>
         <p class="card-text">
           <strong>Category:</strong> {{ item['category']['name'] }}
