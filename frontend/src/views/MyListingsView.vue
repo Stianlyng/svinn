@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ListingFeed from '../components/ListingFeed.vue'
+ import MyListings from '../components/MyListings.vue'
 </script>
 
 <template>
   <main>
     <p>add my listings. shows the entire feed now</p>
-    <ListingFeed />
+    <MyListings />
   </main>
 </template>

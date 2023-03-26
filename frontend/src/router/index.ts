@@ -8,7 +8,7 @@ import LogoutView from '../views/LogoutView.vue'; // Import the LogoutView compo
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", name: "home", component: HomeView, meta: { requiresAuth: true } },
+    { path: "/", name: "home", component: HomeView, meta: { requiresAuth: false } },
     { path: "/sell", name: "sell", component: () => import("../views/SellView.vue"), meta: { requiresAuth: true } },
     { path: "/bookmarks", name: "bookmarks", component: () => import("../views/BookmarksView.vue"), meta: { requiresAuth: true } },
     { path: "/messages", name: "messages", component: () => import("../views/MessageView.vue"), meta: { requiresAuth: true } },
@@ -26,7 +26,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = sessionStorage.getItem("jwtToken");
 
   if (requiresAuth && !isAuthenticated) {
-    next({ name: "register" }); // Redirect to the Register view if not authenticated
+    next({ name: "home" }); // Redirect to the Register view if not authenticated
   } else {
     next(); // Continue to the requested route
   }

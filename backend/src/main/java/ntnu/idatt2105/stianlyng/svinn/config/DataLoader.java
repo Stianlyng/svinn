@@ -86,11 +86,12 @@ public class DataLoader implements CommandLineRunner {
     private void loadItems() {
         Location location = locationRepository.findById(1).orElse(null);
         User user = userRepository.findById(1).orElse(null);
+        User user2 = userRepository.findById(2).orElse(null);
         Category category = categoryRepository.findById(2).orElse(null);
         
         List<Item> items = Arrays.asList(
                 new Item(null, "sofa", "dritnice sofa", 100, LocalDateTime.now(),LocalDateTime.now(), category,location,user),
-                new Item(null, "sofaking", "enda nicere sofa", 100, LocalDateTime.now(),LocalDateTime.now(), category,location,user)
+                new Item(null, "sofaking", "enda nicere sofa", 100, LocalDateTime.now(),LocalDateTime.now(), category,location,user2)
         );
         itemRepository.saveAll(items);
 
