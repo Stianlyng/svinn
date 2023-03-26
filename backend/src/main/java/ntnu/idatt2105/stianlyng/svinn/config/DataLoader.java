@@ -52,9 +52,9 @@ public class DataLoader implements CommandLineRunner {
         loadCategories();
         loadLocations();
         loadUsers();
-        loadItems();
-        loadBookmarks();
-        loadMessages();
+        //loadItems();
+        //loadBookmarks();
+        //loadMessages();
     }
 
 

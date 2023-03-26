@@ -1,6 +1,5 @@
 package ntnu.idatt2105.stianlyng.svinn.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -41,7 +40,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
         .requestMatchers("/api/v1/items/**")
           .permitAll()
         .anyRequest()
-          .authenticated()
+         .authenticated()
         .and()
           .sessionManagement()
           .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

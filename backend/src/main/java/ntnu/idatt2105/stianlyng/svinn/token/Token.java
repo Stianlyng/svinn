@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Builder.Default;
 import ntnu.idatt2105.stianlyng.svinn.entities.User;
 
 @Data
@@ -29,7 +30,8 @@ public class Token {
   public String token;
 
   @Enumerated(EnumType.STRING)
-  public TokenType tokenType = TokenType.BEARER;
+  @Default
+  public final TokenType tokenType = TokenType.BEARER;
 
   public boolean revoked;
 
