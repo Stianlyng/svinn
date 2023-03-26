@@ -32,17 +32,17 @@ export default {
 
     const submitForm = async () => {
       try {
-        const response = await axiosInstance.post('/api/v1/items', {
-          briefDescription: briefDescription.value,
-          fullDescription: fullDescription.value,
-          price: price.value,
-          // Add category_id, location_id, and user_id according to your app logic
-          category_id: 1,
-          location_id: 2,
-          user_id: 3,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        });
+    const response = await axiosInstance.post('/api/v1/items', {
+      briefDesc: briefDescription.value,
+      longDesc: fullDescription.value,
+      price: price.value,
+      categoryId: 1,
+      locationId: 1
+    }, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
 
         console.log(response.data);
         alert('Item created successfully');
