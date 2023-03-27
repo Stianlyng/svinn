@@ -1,5 +1,6 @@
 <template>
   <div class="input-group">
+  <p>NB: not fully implemented. only a few options, enter 's' and choose</p>
     <input
       type="text"
       class="search-input"

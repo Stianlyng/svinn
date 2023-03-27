@@ -1,4 +1,4 @@
-package ntnu.idatt2105.stianlyng.svinn.auth;
+package ntnu.idatt2105.stianlyng.svinn.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class RegisterRequest {
 
+  private String firstname;
+  private String lastname;
   private String email;
-  String password;
+  private String password;
 }

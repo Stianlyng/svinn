@@ -18,6 +18,9 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/**
+ * Filter responsible for authenticating requests based on the JWT token.
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -26,6 +29,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final UserDetailsService userDetailsService;
   private final TokenRepository tokenRepository;
 
+ /**
+   * Performs authentication and authorization for incoming requests based on the JWT token.
+   *
+   * @param request  HttpServletRequest instance
+   * @param response HttpServletResponse instance
+   * @param filterChain FilterChain instance
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs during this filter's processing
+   */
   @Override
   protected void doFilterInternal(
       @NonNull HttpServletRequest request,

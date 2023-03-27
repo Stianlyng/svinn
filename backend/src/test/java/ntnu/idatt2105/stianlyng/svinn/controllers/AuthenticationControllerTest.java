@@ -1,12 +1,10 @@
 package ntnu.idatt2105.stianlyng.svinn.controllers;
 
-import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationRequest;
-import ntnu.idatt2105.stianlyng.svinn.auth.RegisterRequest;
+import ntnu.idatt2105.stianlyng.svinn.DTO.RegisterRequest;
 import ntnu.idatt2105.stianlyng.svinn.config.LogoutService;
 import ntnu.idatt2105.stianlyng.svinn.services.AuthenticationService;
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,9 +25,6 @@ class AuthenticationControllerTest {
 
     @Autowired
     private AuthenticationService authService;
-
-    @Autowired
-    private LogoutService logoutService;
 
     private String email = "stian@kul.no";
     private String password = "pw123";

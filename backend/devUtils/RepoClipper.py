@@ -30,16 +30,14 @@ def read_files(file_paths):
                  
 directory = '/home/stian/Code/svinn/backend'
 
-#with open(directory + '/ShortDesc.md', 'r') as f:
- #           print(f.read())
 
 extentions = ['.java','.properties', '.sql']
 filePaths = get_file_paths_with_extension(directory, extentions)
 
-#print(f"# This is some relevant files from my repo:")
+print(f"# This is some relevant files from my repo:")
 
-#for i in filePaths:
-#    print(i)
+for i in filePaths:
+    print(i)
 
 fileContents = read_files(filePaths)
 

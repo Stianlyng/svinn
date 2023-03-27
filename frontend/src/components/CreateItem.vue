@@ -58,7 +58,6 @@ export default defineComponent({
         });
         console.log("Item created successfully!")
         console.log(this.categoryId)
-        // Redirect or show success message after creating the item
         router.push("/")
       } catch (error) {
         console.error("Error creating item:", error);

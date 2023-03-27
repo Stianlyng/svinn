@@ -1,9 +1,9 @@
 package ntnu.idatt2105.stianlyng.svinn.controllers;
 
 import lombok.RequiredArgsConstructor;
-import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationRequest;
-import ntnu.idatt2105.stianlyng.svinn.auth.AuthenticationResponse;
-import ntnu.idatt2105.stianlyng.svinn.auth.RegisterRequest;
+import ntnu.idatt2105.stianlyng.svinn.DTO.AuthenticationRequest;
+import ntnu.idatt2105.stianlyng.svinn.DTO.AuthenticationResponse;
+import ntnu.idatt2105.stianlyng.svinn.DTO.RegisterRequest;
 import ntnu.idatt2105.stianlyng.svinn.config.LogoutService;
 import ntnu.idatt2105.stianlyng.svinn.services.AuthenticationService;
 
