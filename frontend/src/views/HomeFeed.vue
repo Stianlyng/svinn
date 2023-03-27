@@ -1,16 +1,18 @@
 <template>
   <div>
-    <CreateItem />
+    <LocationForm />
+    <ItemList apiEndpoint="api/v1/items" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import CreateItem from '@/components/CreateItem.vue';
+import ItemList from '@/components/ItemList.vue'
+
 
 export default defineComponent({
   components: {
-    CreateItem,
+    ItemList,
   },
 });
 </script>

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
 
-        List<Item> findByUserId(Long userId);
+        List<Item> findByUserId(Integer userId);
         
         @Query("SELECT i FROM Item i WHERE i.user.email = :email")
         List<Item> findByEmail(@Param("email") String email);

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeFeed from "../views/HomeFeed.vue";
 import RegisterView from "../views/RegisterView.vue";
 import LoginView from "../views/LoginView.vue";
 import LogoutView from '../views/LogoutView.vue'; // Import the LogoutView component
@@ -8,7 +8,7 @@ import LogoutView from '../views/LogoutView.vue'; // Import the LogoutView compo
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", name: "home", component: HomeView, meta: { requiresAuth: false } },
+    { path: "/", name: "home", component: HomeFeed, meta: { requiresAuth: false } },
     { path: "/sell", name: "sell", component: () => import("../views/SellView.vue"), meta: { requiresAuth: true } },
     { path: "/bookmarks", name: "bookmarks", component: () => import("../views/BookmarksView.vue"), meta: { requiresAuth: true } },
     { path: "/messages", name: "messages", component: () => import("../views/MessageView.vue"), meta: { requiresAuth: true } },
@@ -17,6 +17,7 @@ const router = createRouter({
     { path: "/register", name: "register", component: RegisterView },
     { path: "/login", name: "login", component: LoginView },
     { path: '/logout', name: 'logout', component: LogoutView }, // Add the LogoutView component here
+    {path: "/cat", name: "cat", component: () => import("../components/elements/CategoryDropdown.vue"), meta: { requiresAuth: true } },
   ],
 });
 

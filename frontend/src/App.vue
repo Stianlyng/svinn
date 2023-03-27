@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import Heading from './components/Heading.vue'
 
 
 const isAuthenticated = sessionStorage.getItem("jwtToken");
@@ -12,22 +11,19 @@ const showAuthLinks = !isAuthenticated;
   <header>
 
     <div class="wrapper">
-      <Heading msg="Svinn - reduce waste" />
+        <a class="typing">echo "the most minimal marketplace"</a>
 
-      <nav>
-        <RouterLink to="/">feed</RouterLink>
-        
-        <template v-if="showAuthLinks">
+      <nav class="links">
+          <RouterLink to="/">feed</RouterLink>
+        <template  v-if="showAuthLinks">
           <RouterLink to="/register">register</RouterLink>
           <RouterLink to="/login">login</RouterLink>
         </template>
-
-        <template v-else>
+        <template  v-else="showAuthLinks">
           <RouterLink to="/sell">sell</RouterLink>
           <RouterLink to="/bookmarks">favs</RouterLink>
           <RouterLink to="/messages">chat</RouterLink>
           <RouterLink to="/my-listings">my stuff</RouterLink>
-          <RouterLink to="/profile">profile</RouterLink>
           <RouterLink to="/logout">logout</RouterLink>
         </template>
         
@@ -40,65 +36,43 @@ const showAuthLinks = !isAuthenticated;
 
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+
+.wrappper {
+  width: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.typing {
+  width: 39ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 1.2em;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+@keyframes typing {
+  from {
+    width: 0
   }
 }
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%; /* adjust this value to your liking */
+  margin: 0 auto; /* centers the block horizontally */
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
 </style>

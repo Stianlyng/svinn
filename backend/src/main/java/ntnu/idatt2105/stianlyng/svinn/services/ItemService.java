@@ -63,6 +63,11 @@ public class ItemService {
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
+    
+    public List<Item> getAllItemsByUser() {
+        User user = userService.getAuthenticatedUser();
+        return itemRepository.findByUserId(user.getId());
+    }
 
     
     public void deleteItem(Integer itemId) {
@@ -118,9 +123,6 @@ public class ItemService {
     }
      */
 
-    public List<Item> getAllItemsByLoggedInUser(Long userId) {
-        return itemRepository.findByUserId(userId);
-    }
     
     public List<Item> getAllItemsByEmail(String email) {
         return itemRepository.findByEmail(email);

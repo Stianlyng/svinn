@@ -1,10 +1,16 @@
-<script setup lang="ts">
- import MyListings from '../components/MyListings.vue'
-</script>
-
 <template>
-  <main>
-    <p>add my listings. shows the entire feed now</p>
-    <MyListings />
-  </main>
+  <div>
+    <ItemList apiEndpoint="api/v1/items/user" />
+  </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import ItemList from '@/components/ItemList.vue'
+
+export default defineComponent({
+  components: {
+    ItemList,
+  },
+});
+</script>

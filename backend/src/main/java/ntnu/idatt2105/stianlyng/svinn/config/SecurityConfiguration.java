@@ -11,7 +11,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -40,7 +39,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
         .requestMatchers("/api/v1/items/**")
           .permitAll()
         .anyRequest()
-         .authenticated()
+          .authenticated()
         .and()
           .sessionManagement()
           .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -59,9 +58,10 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry registry) {
       registry.addMapping("/**")
-              .allowedOrigins("http://localhost:5173") 
+              .allowedOrigins("http://dev.stian.localhost:5173/sell", "http://dev.stian.localhost:5173/") 
               .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
               .allowedHeaders("*")
               .allowCredentials(true);
   }
-}
+  
+ }
