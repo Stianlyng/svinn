@@ -68,8 +68,8 @@ public class ItemService {
         User user = userService.getAuthenticatedUser();
         return itemRepository.findByUserId(user.getId());
     }
-
     
+
     public void deleteItem(Integer itemId) {
     Optional<Item> optionalItem = itemRepository.findById(itemId);
 

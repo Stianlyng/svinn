@@ -14,12 +14,23 @@ public class BookmarkService {
     @Autowired
     private BookmarkRepository bookmarkRepository;
 
+    @Autowired
+    private UserService userService;
+
     public Bookmark createBookmark(Bookmark bookmark) {
+        return bookmarkRepository.save(bookmark);
+    }
+    
+    public Bookmark createBookmarkByItemID(int itemId) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setId(itemId);
+        bookmark.setUser(userService.getAuthenticatedUser());
         return bookmarkRepository.save(bookmark);
     }
 
     public List<Bookmark> getAllBookmarks() {
-        return bookmarkRepository.findAll();
+        int user = userService.getAuthenticatedUser().getId();
+        return bookmarkRepository.findByUserId(user);
     }
 
     public void deleteBookmark(Integer bookmarkId) {

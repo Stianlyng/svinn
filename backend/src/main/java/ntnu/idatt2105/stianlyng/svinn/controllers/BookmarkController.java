@@ -16,12 +16,17 @@ public class BookmarkController {
     @Autowired
     private BookmarkService bookmarkService;
 
-    @PostMapping
-    public ResponseEntity<Bookmark> createBookmark(@RequestBody Bookmark bookmark) {
-        Bookmark createdBookmark = bookmarkService.createBookmark(bookmark);
+    //@PostMapping
+    //public ResponseEntity<Bookmark> createBookmark(@RequestBody Bookmark bookmark) {
+    //    Bookmark createdBookmark = bookmarkService.createBookmark(bookmark);
+    //    return ResponseEntity.ok(createdBookmark);
+    //}
+
+    @PostMapping("/{itemId}")
+    public ResponseEntity<Bookmark> createBookmarkByItemID(@PathVariable int itemId) {
+        Bookmark createdBookmark = bookmarkService.createBookmarkByItemID(itemId);
         return ResponseEntity.ok(createdBookmark);
     }
-
     @GetMapping
     public ResponseEntity<List<Bookmark>> getAllBookmarks() {
         List<Bookmark> bookmarks = bookmarkService.getAllBookmarks();

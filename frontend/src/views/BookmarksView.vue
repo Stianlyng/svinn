@@ -1,15 +1,16 @@
 <template>
-  <div class="bookmarks">
-    <h1>My bookmarks</h1>
+  <div>
+    <ItemList apiEndpoint="api/v1/items/user/bookmarks" />
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .bookmarks {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script lang="ts">
+import { defineComponent } from "vue";
+import ItemList from '@/components/ItemList.vue'
+
+export default defineComponent({
+  components: {
+    ItemList,
+  },
+});
+</script>

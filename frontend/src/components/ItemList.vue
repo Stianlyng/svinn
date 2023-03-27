@@ -14,6 +14,14 @@
         <p class="card-text">
           <strong>Seller:</strong> {{ item['user']['firstname'] }} {{ item['user']['lastname'] }}
         </p>
+        <p class="card-text">
+          <strong>Add to favourites:</strong> 
+          <!-- ADD Button that sends as post request to "/api/v1/bookmarks/item['id'] -->
+        </p>
+        <p class="card-text">
+          <strong>Add to favourites:</strong> 
+          <button @click="addToFavourites(item['id'])">Add to favourites</button>
+        </p>
       </div>
     </div>
   </div>
@@ -44,17 +52,24 @@ export default defineComponent({
         console.error("Error fetching items:", error);
       }
     },
+    async addToFavourites(itemId: number) {
+      try {
+        await axiosInstance.post(`/api/v1/bookmarks/${itemId}`);
+        alert("Item added to favourites!");
+      } catch (error) {
+        console.error("Error adding item to favourites:", error);
+      }
+    },
   },
   created() {
     this.fetchItems();
   },
 });
 </script>
-
 <style scoped>
 .items-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr; 
   font-family: Source Code Pro, monospace;
   grid-gap: 1rem;
   padding: 1rem;
@@ -71,6 +86,7 @@ export default defineComponent({
   align-items: stretch;
   height: 100%;
   border: 1px solid var(--color-border);
+  height: 20em;
 }
 
 .card:hover {
