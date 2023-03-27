@@ -9,12 +9,11 @@ const showAuthLinks = !isAuthenticated;
 
 <template>
   <header>
-
-    <div class="wrapper">
         <a class="typing">echo "the most minimal marketplace"</a>
+  </header>
 
-      <nav class="links">
-          <RouterLink to="/">feed</RouterLink>
+    <nav>
+      <RouterLink to="/">feed</RouterLink>
         <template  v-if="showAuthLinks">
           <RouterLink to="/register">register</RouterLink>
           <RouterLink to="/login">login</RouterLink>
@@ -26,23 +25,16 @@ const showAuthLinks = !isAuthenticated;
           <RouterLink to="/my-listings">my stuff</RouterLink>
           <RouterLink to="/logout">logout</RouterLink>
         </template>
-        
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <RouterView />
+    <section>
+      <RouterView />
+    </section>
 </template>
 
 
 <style scoped>
 
-.wrappper {
-  width: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .typing {
   width: 39ch;
   animation: typing 2s steps(22), blink .5s step-end infinite alternate;
@@ -65,14 +57,41 @@ const showAuthLinks = !isAuthenticated;
   }
 }
 
-.links {
+header {
+	grid-area: header;
+  height: 10em;
+}
+
+nav {
+	grid-area: nav; 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 50%; /* adjust this value to your liking */
-  margin: 0 auto; /* centers the block horizontally */
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding: 1rem 2rem;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+section {
+	grid-area: section;    
+}
+
+aside {
+	grid-area: aside; 
+}
+
+footer {
+	grid-area: footer;
+}
+
+header, nav, section, aside, footer {
+	padding: 5px;
 }
 
 </style>
