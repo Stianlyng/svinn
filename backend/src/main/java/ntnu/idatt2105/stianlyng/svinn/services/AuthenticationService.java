@@ -15,6 +15,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service class for managing authentication-related operations.
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -24,6 +27,12 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
+ /**
+  * Registers a new user using the provided RegisterRequest instance.
+  *
+  * @param request the RegisterRequest instance containing user registration details
+  * @return AuthenticationResponse containing the JWT token for the registered user
+  */
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
         .firstname(request.getFirstname())
@@ -39,7 +48,12 @@ public class AuthenticationService {
         .token(jwtToken)
         .build();
   }
-
+ /**
+  * Authenticates a user using the provided AuthenticationRequest instance.
+  *
+  * @param request the AuthenticationRequest instance containing user authentication details
+  * @return AuthenticationResponse containing the JWT token for the authenticated user
+  */
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
@@ -57,6 +71,12 @@ public class AuthenticationService {
         .build();
   }
 
+ /**
+  * Saves a JWT token for a user.
+  *
+  * @param user the User instance for which the JWT token is to be saved
+  * @param jwtToken the JWT token to be saved
+  */
   private void saveUserToken(User user, String jwtToken) {
     var token = Token.builder()
         .user(user)
@@ -68,6 +88,11 @@ public class AuthenticationService {
     tokenRepository.save(token);
   }
 
+ /**
+  * Revokes all valid JWT tokens for a user.
+  *
+  * @param user the User instance for which all valid JWT tokens should be revoked
+  */
   private void revokeAllUserTokens(User user) {
     var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
     if (validUserTokens.isEmpty())

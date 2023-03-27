@@ -30,23 +30,23 @@ The project is structured as follows:
 > The token is integrated in the frontend, using the pinia store and custom axios instance.
 
 - User can create an account
-    - POST: http://localhost:8080/api/v1/auth/register
+    - POST: http://localhost:8080/api/auth/register
     - Body: { "firstname": "donaldo", "lastname": "trump", "email": "a@b.c", "password": "pwd" }
 - User can login
-    - POST: http://localhost:8080/api/v1/auth/login
+    - POST: http://localhost:8080/api/auth/login
     - Body: { "email": "a@b.c", "password": "pwd" }
 - User can create a listing
-    - POST: http://localhost:8080/api/v1/items
+    - POST: http://localhost:8080/api/items
     - Body: { "briefDescription": "title", "fullDescription": "description", "price": 100, "categoryId": 1,"locationId": 1 }
 - User can view listings
-    - GET: http://localhost:8080/api/v1/items
+    - GET: http://localhost:8080/api/items
 - User can view a listing he has created
-    - GET: http://localhost:8080/api/v1/items/user
+    - GET: http://localhost:8080/api/items/user
 - User can edit a listing he has created based on the id
-    - PUT: http://localhost:8080/api/v1/items/{id}
+    - PUT: http://localhost:8080/api/items/{id}
     - Body: { "briefDescription": "title", "fullDescription": "description", "price": 100, "categoryId": 1,"locationId": 1 }
 - User can delete a listing he has created based on the id
-    - DELETE: http://localhost:8080/api/v1/items/{id}
+    - DELETE: http://localhost:8080/api/items/{id}
 
 ## Database
 I used H2 for the database, as i did not have time to set up a postgres database.
@@ -106,7 +106,7 @@ The database is populated with data from the dataLoader file, which is located i
     - expired
     - user_id (Foreign Key: Users)
 
-Relationships
+# Relationships
 
 - Users (1) - (Many) Items: One user can list many items.
 - Users (1) - (Many) Bookmarks: One user can bookmark many items.
