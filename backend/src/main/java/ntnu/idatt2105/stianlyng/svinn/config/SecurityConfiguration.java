@@ -34,7 +34,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
           .permitAll()
         .requestMatchers("/swagger-ui.html")
           .permitAll()
-        .requestMatchers("/v3/api-docs")
+        .requestMatchers("/v3/api-docs/**")
           .permitAll()
         .requestMatchers("/api/v1/items/**")
           .permitAll()
@@ -57,6 +57,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
     return http.build();
   }
 
+  
   @Override
   public void addCorsMappings(CorsRegistry registry) {
       registry.addMapping("/**")
