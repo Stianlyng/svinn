@@ -1,3 +1,4 @@
+
 <template>
   <div class="items-container">
     <div class="card" v-for="item in items" :key="item['id']">
@@ -17,7 +18,7 @@
         <p class="card-text">
           <button @click="addToFavourites(item['id'])">Add to favourites</button>
         </p>
-      <router-link :to="{ name: 'item', params: { id: 1 } }">boom</router-link>
+    <router-link :to="{ name: 'item', params: { itemId: item['id'] }}">go to</router-link>
       </div>
     </div>
   </div>
@@ -62,6 +63,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .items-container {
   display: grid;

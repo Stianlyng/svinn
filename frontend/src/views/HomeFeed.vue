@@ -1,6 +1,5 @@
 <template>
   <div>
-    <LocationForm />
     <ItemList apiEndpoint="api/v1/items" />
   </div>
 </template>
