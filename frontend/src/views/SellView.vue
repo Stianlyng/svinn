@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Other content -->
     <CreateItem />
   </div>
 </template>

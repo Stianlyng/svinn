@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import Heading from './components/Heading.vue'
 
 
 const isAuthenticated = sessionStorage.getItem("jwtToken");
@@ -12,11 +11,15 @@ const showAuthLinks = !isAuthenticated;
   <header>
 
     <div class="wrapper">
-        <a class="typing">Svinn - the most minimal marketplace...</a>
+        <a class="typing">echo "the most minimal marketplace"</a>
 
       <nav class="links">
-        <template  v-if="showAuthLinks">
           <RouterLink to="/">feed</RouterLink>
+        <template  v-if="showAuthLinks">
+          <RouterLink to="/register">register</RouterLink>
+          <RouterLink to="/login">login</RouterLink>
+        </template>
+        <template  v-else="showAuthLinks">
           <RouterLink to="/sell">sell</RouterLink>
           <RouterLink to="/bookmarks">favs</RouterLink>
           <RouterLink to="/messages">chat</RouterLink>
@@ -39,7 +42,6 @@ const showAuthLinks = !isAuthenticated;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
 }
 .typing {
   width: 39ch;
