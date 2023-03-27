@@ -11,13 +11,13 @@ const router = createRouter({
     { path: "/", name: "home", component: HomeFeed, meta: { requiresAuth: false } },
     { path: "/sell", name: "sell", component: () => import("../views/SellView.vue"), meta: { requiresAuth: true } },
     { path: "/bookmarks", name: "bookmarks", component: () => import("../views/BookmarksView.vue"), meta: { requiresAuth: true } },
+    { path: "/categories", name: "categories", component: () => import("../views/Categories.vue"), meta: { requiresAuth: false } },
     { path: "/messages", name: "messages", component: () => import("../views/MessageView.vue"), meta: { requiresAuth: true } },
     { path: "/profile", name: "profile", component: () => import("../views/ProfileView.vue"), meta: { requiresAuth: true } },
     { path: "/my-listings", name: "my-listings", component: () => import("../views/MyListingsView.vue"), meta: { requiresAuth: true } },
     { path: "/register", name: "register", component: RegisterView },
     { path: "/login", name: "login", component: LoginView },
     { path: '/logout', name: 'logout', component: LogoutView }, // Add the LogoutView component here
-    {path: "/cat", name: "cat", component: () => import("../components/elements/CategoryDropdown.vue"), meta: { requiresAuth: true } },
   ],
 });
 

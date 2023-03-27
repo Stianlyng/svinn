@@ -38,6 +38,8 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
           .permitAll()
         .requestMatchers("/api/v1/items/**")
           .permitAll()
+        .requestMatchers("/api/**")
+          .permitAll()
         .anyRequest()
           .authenticated()
         .and()

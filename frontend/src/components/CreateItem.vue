@@ -16,7 +16,8 @@
       </div>
       <div class="input-group">
         <label for="category">Category:</label>
-        <input type="number" step="1" id="category" v-model="categoryId" required />
+        <!-- <input type="number" step="1" id="category" v-model="categoryId" required /> -->
+        <CategoryDropdown @category-selected="setCategoryId" />
       </div>
       <button type="submit" class="submit-btn">Create Item</button>
     </form>
@@ -27,6 +28,8 @@
 import { defineComponent } from "vue";
 import axiosInstance from "@/axiosInstance";
 import CategoryDropdown from "@/components/elements/CategoryDropdown.vue";
+import { useRouter } from "vue-router";
+import router from "@/router";
 
 export default defineComponent({
   components: {
@@ -53,7 +56,10 @@ export default defineComponent({
           categoryId: this.categoryId,
           locationId: 1,
         });
+        console.log("Item created successfully!")
+        console.log(this.categoryId)
         // Redirect or show success message after creating the item
+        router.push("/")
       } catch (error) {
         console.error("Error creating item:", error);
       }

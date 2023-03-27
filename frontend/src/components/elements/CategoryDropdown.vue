@@ -1,8 +1,14 @@
 <template>
-  <div class="category-list">
-    <h2>Categories</h2>
-    <ul>
-      <li v-for="category in categories" :key="category.id">
+  <div class="input-group">
+    <input
+      type="text"
+      class="search-input"
+      v-model="searchTerm"
+      @input="searchCategories"
+      placeholder="Search categories"
+    />
+    <ul v-show="searchTerm" class="dropdown">
+      <li v-for="category in filteredCategories" :key="category.id" @click="selectCategory(category)">
         {{ category.name }}
       </li>
     </ul>
@@ -16,18 +22,15 @@ import axiosInstance from "@/axiosInstance";
 interface Category {
   id: number;
   name: string;
+  description: string;
 }
 
 export default defineComponent({
-  props: {
-    apiEndpoint: {
-      type: String,
-      required: true,
-    },
-  },
   data() {
     return {
       categories: [] as Category[],
+      filteredCategories: [] as Category[],
+      searchTerm: "",
     };
   },
   methods: {
@@ -39,26 +42,19 @@ export default defineComponent({
         console.error("Error fetching categories:", error);
       }
     },
+    searchCategories() {
+      this.filteredCategories = this.categories.filter((category: Category) =>
+        category.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    },
+    selectCategory(category: Category) {
+      this.searchTerm = category.name;
+      this.filteredCategories = [];
+      this.$emit("category-selected", category.id);
+    },
   },
   created() {
     this.fetchCategories();
   },
 });
 </script>
-
-<style scoped>
-.category-list {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 10px;
-}
-</style>
