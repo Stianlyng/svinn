@@ -36,6 +36,12 @@ public class ItemController {
         return ResponseEntity.ok(items);
     }
     
+    @GetMapping("/user")
+    public ResponseEntity<List<Item>> getAllItemsByUser() {
+        List<Item> items = itemService.getAllItemsByUser();
+        return ResponseEntity.ok(items);
+    }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Item> getItem(@PathVariable Integer id) {
         Item item = itemService.getItem(id);

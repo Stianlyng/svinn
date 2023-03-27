@@ -1,16 +1,17 @@
 <template>
   <div>
     <!-- Other content -->
-    <CreateItemForm />
+    <CreateItem />
   </div>
 </template>
 
 <script lang="ts">
-import CreateItemForm from '@/components/CreateItemForm.vue';
+import { defineComponent } from "vue";
+import CreateItem from '@/components/CreateItem.vue';
 
-export default {
+export default defineComponent({
   components: {
-    CreateItemForm,
+    CreateItem,
   },
-};
+});
 </script>

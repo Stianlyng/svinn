@@ -1,6 +1,6 @@
 <template>
   <div class="items-container">
-    <div class="card" v-for="item in items" :key="item.id">
+    <div class="card" v-for="item in items" :key="item['id']">
       <div class="card-body">
         <h5 class="card-title">{{ item['briefDescription'] }}</h5>
         <p class="card-text">{{ item['fullDescription'] }}</p>
@@ -26,6 +26,12 @@ import { defineComponent } from "vue";
 import axiosInstance from "@/axiosInstance";
 
 export default defineComponent({
+  props: {
+    apiEndpoint: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       items: [],
@@ -34,7 +40,7 @@ export default defineComponent({
   methods: {
     async fetchItems() {
       try {
-        const response = await axiosInstance.get("api/v1/items");
+        const response = await axiosInstance.get(this.apiEndpoint);
         this.items = response.data;
       } catch (error) {
         console.error("Error fetching items:", error);
