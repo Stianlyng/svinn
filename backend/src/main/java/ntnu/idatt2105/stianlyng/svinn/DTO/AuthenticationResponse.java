@@ -1,4 +1,4 @@
-package ntnu.idatt2105.stianlyng.svinn.auth;
+package ntnu.idatt2105.stianlyng.svinn.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

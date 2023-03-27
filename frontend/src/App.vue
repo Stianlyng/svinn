@@ -23,6 +23,7 @@ const showAuthLinks = !isAuthenticated;
           <RouterLink to="/bookmarks">favs</RouterLink>
           <RouterLink to="/messages">chat</RouterLink>
           <RouterLink to="/my-listings">my stuff</RouterLink>
+          <RouterLink to="/profile">profile</RouterLink>
           <RouterLink to="/logout">logout</RouterLink>
         </template>
     </nav>

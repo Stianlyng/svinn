@@ -17,7 +17,7 @@ export default defineComponent({
 
     if (jwtToken) {
       try {
-        await axiosInstance.post('api/v1/auth/logout', {}, {
+        await axiosInstance.post('api/auth/logout', {}, {
           headers: { Authorization: `Bearer ${jwtToken}` },
         });
       } catch (error) {

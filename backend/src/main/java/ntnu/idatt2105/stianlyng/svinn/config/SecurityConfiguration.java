@@ -22,25 +22,32 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
   private final AuthenticationProvider authenticationProvider;
   private final LogoutHandler logoutHandler;
 
+/**
+  * Configures the HttpSecurity settings, including access control and authentication.
+  *
+  * @param http HttpSecurity instance
+  * @return SecurityFilterChain instance
+  * @throws Exception in case of a failure during configuration
+  */
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .csrf()
         .disable()
         .authorizeHttpRequests()
-        .requestMatchers("/api/v1/auth/**")
+        .requestMatchers("/api/auth/**")
           .permitAll()
         .requestMatchers("/swagger-ui/**")
           .permitAll()
         .requestMatchers("/swagger-ui.html")
           .permitAll()
-        .requestMatchers("/v3/api-docs")
+        .requestMatchers("/v3/api-docs/**")
           .permitAll()
-        .requestMatchers("/api/v1/items/**")
+        .requestMatchers("/api/items/**")
           .permitAll()
-        .requestMatchers("/api/**")
-          .permitAll()
-        .anyRequest()
+        .requestMatchers("/api/**") // as a result of teh strict CORS policy in firefox, 
+          .permitAll()                          // i had to add this to get the frontend to work
+        .anyRequest()                          // everything works fine in postman and qutebrowser 
           .authenticated()
         .and()
           .sessionManagement()
@@ -49,7 +56,7 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
         .logout()
-        .logoutUrl("/api/v1/auth/logout")
+        .logoutUrl("/api/auth/logout")
         .addLogoutHandler(logoutHandler)
         .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
     ;
@@ -57,10 +64,15 @@ public class SecurityConfiguration  implements WebMvcConfigurer {
     return http.build();
   }
 
+/**
+  * Configures CORS settings for the application.
+  *
+  * @param registry CorsRegistry instance
+  */
   @Override
   public void addCorsMappings(CorsRegistry registry) {
       registry.addMapping("/**")
-              .allowedOrigins("http://dev.stian.localhost:5173/sell", "http://dev.stian.localhost:5173/") 
+              .allowedOrigins("http://localhost:5173/sell", "http://localhost:5173/") 
               .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
               .allowedHeaders("*")
               .allowCredentials(true);

@@ -21,20 +21,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Gets all users by handeling GET requests to /api/user.
+     * Calls getAllUsers() method of UserService instance to retrieve all users.
+     * 
+     * @return ResponseEntity with a list of all users.
+     */
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
     
-    //@GetMapping("/{email}")
-    //public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-    //    Optional<User> user = userService.getUserByEmail(email);
-    //    return user.map(ResponseEntity::ok)
-    //            .orElseGet(() -> ResponseEntity.notFound().build());
-    //}
-    
-
+    /**
+     * Gets the authenticated user by handeling GET requests to /api/user/me.
+     * Calls getAuthenticatedUser() method of UserService instance to retrieve the authenticated user.
+     * 
+     * @return ResponseEntity with the authenticated user.
+     */
     @GetMapping("/me")
     public ResponseEntity<User> getAuthenticatedUser() {
         User user = userService.getAuthenticatedUser();

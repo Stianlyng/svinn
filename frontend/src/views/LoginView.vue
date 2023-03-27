@@ -31,7 +31,7 @@ export default defineComponent({
   methods: {
     async login() {
       try {
-        const response = await axios.post("api/v1/auth/authenticate", {
+        const response = await axios.post("api/auth/authenticate", {
           email: this.email,
           password: this.password,
         });

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ItemList apiEndpoint="api/v1/items/user/bookmarks" />
+    <ItemList apiEndpoint="api/items/user/bookmarks" />
   </div>
 </template>
 

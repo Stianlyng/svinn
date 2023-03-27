@@ -14,8 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller class for handling Item-related requests, such as creation, deletion, and updating.
+ */
 @RestController
-@RequestMapping("/api/v1/items")
+@RequestMapping("/api/items")
 public class ItemController {
 
     @Autowired
@@ -23,12 +26,12 @@ public class ItemController {
 
     @Autowired
     private BookmarkService bookmarkService;
-    
+
     /**
-     * Creates a new item
+     * Creates a new Item object by handeling POST requests to /api/items.
      * 
-     * @param itemRequest
-     * @return
+     * @param itemRequest an ItemRequestDTO object representing the item's information
+     * @return a response enity with the new item and a status code
      */
     @PostMapping
     public ResponseEntity<Item> createItem(@RequestBody ItemRequestDTO itemRequest) {
@@ -36,18 +39,33 @@ public class ItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newItem);
     }
 
+    /**
+     * Gets all items by handeling GET requests to /api/items.
+     * 
+     * @return ResponseEntity with a list of all items and a status code.
+     */
     @GetMapping
     public ResponseEntity<List<Item>> getAllItems() {
         List<Item> items = itemService.getAllItems();
         return ResponseEntity.ok(items);
     }
     
+    /**
+     * Gets all items belonging to the current user by handeling GET requests to /api/items/user.
+     * 
+     * @return ResponseEntity with a list of all items belonging to the current user and a status code.
+     */
     @GetMapping("/user")
     public ResponseEntity<List<Item>> getAllItemsByUser() {
         List<Item> items = itemService.getAllItemsByUser();
         return ResponseEntity.ok(items);
     }
    
+    /**
+     * Gets all items bookmarked by the current user by handeling GET requests to /api/items/user/bookmarks.
+     * 
+     * @return ResponseEntity with a list of all items bookmarked by the current user and a status code.
+     */
     @GetMapping("/user/bookmarks")
     public ResponseEntity<List<Item>> getAllBookmarksByUser() {
         List<Bookmark> bookmarks = bookmarkService.getAllBookmarks();
@@ -59,12 +77,24 @@ public class ItemController {
         return ResponseEntity.ok(items);
     }
 
+    /**
+     * Get an item by its ID by handeling GET requests to /api/items/{id}.
+     * 
+     * @param id an Integer representing the ID of the item to be retrieved
+     * @return ResponseEntity with a list of all items and a status code.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Item> getItem(@PathVariable Integer id) {
         Item item = itemService.getItem(id);
         return ResponseEntity.ok(item);
     }
 
+    /**
+     * Deletes an item by its ID by handeling DELETE requests to /api/items/{itemId}.
+     * 
+     * @param itemId an Integer representing the ID of the item to be deleted
+     * @return ResponseEntity with a status code indicating success or failure of the deletion attempt
+     */
     @DeleteMapping("/{itemId}")
     public ResponseEntity<Void> deleteItem(@PathVariable Integer itemId) {
         itemService.deleteItem(itemId);
@@ -73,6 +103,13 @@ public class ItemController {
 
 
     //todo; consider adding a child that extends ItemRequestDTO, and add the id there..
+    /**
+     * Updates an item by its ID by handeling PUT requests to /api/items/{itemId}.
+     *
+     * @param itemId
+     * @param itemRequest
+     * @return ResponseEntity with a status code indicating success or failure of the update attempt
+     */
     @PutMapping("/{itemId}")
     public ResponseEntity<Item> updateItem(@PathVariable Integer itemId, @RequestBody ItemRequestDTO itemRequest) {
         Item updatedItem = itemService.updateItem(itemId, itemRequest);

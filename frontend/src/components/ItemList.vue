@@ -1,9 +1,15 @@
 <template>
   <div class="items-container">
     <div class="card" v-for="item in items" :key="item['id']">
-      <img src="https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Placeholder Image">
+      <router-link class="img-holder" :to="{ name: 'item', params: { id: item['id'] } }">
+        <img src="https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Placeholder Image">
+      </router-link>
       <div class="card-body">
-        <h5 class="card-title">~ {{ item['briefDescription'] }}</h5>
+        <h5 class="card-title">
+          <router-link :to="{ name: 'item', params: { id: item['id'] } }">
+            ~ {{ item['briefDescription'] }}
+          </router-link>
+        </h5>
         <p class="card-text">{{ item['fullDescription'] }}</p>
         <p class="card-text">
           <strong>Price:</strong> {{ item['price'] }}
@@ -15,9 +21,10 @@
           <strong>Seller:</strong> {{ item['user']['firstname'] }} {{ item['user']['lastname'] }}
         </p>
         <p class="card-text">
-          <button @click="addToFavourites(item['id'])">Add to favourites</button>
+        <template  v-if="isAuth">
+          <button class="f-btn" @click="addToFavourites(item['id'])">Add to favourites</button>
+        </template>
         </p>
-      <router-link :to="{ name: 'item', params: { id: 1 } }">boom</router-link>
       </div>
     </div>
   </div>
@@ -27,6 +34,8 @@
 import { defineComponent } from "vue";
 import axiosInstance from "@/axiosInstance";
 
+import { RouterLink, RouterView } from 'vue-router'
+
 export default defineComponent({
   props: {
     apiEndpoint: {
@@ -35,8 +44,11 @@ export default defineComponent({
     },
   },
   data() {
+    const isAuthenticated = sessionStorage.getItem("jwtToken");
+    const showAuthLinks = !!(isAuthenticated);
     return {
       items: [],
+      isAuth: showAuthLinks,
     };
   },
   methods: {
@@ -50,8 +62,8 @@ export default defineComponent({
     },
     async addToFavourites(itemId: number) {
       try {
-        await axiosInstance.post(`/api/v1/bookmarks/${itemId}`);
-        alert("Item added to favourites!");
+        await axiosInstance.post(`/api/bookmarks/${itemId}`);
+        console.log("Item added to favourites!");
       } catch (error) {
         console.error("Error adding item to favourites:", error);
       }
@@ -88,7 +100,7 @@ export default defineComponent({
 .card:hover {
   outline: 4px solid hsla(160, 100%, 37%, 1);
 }
-.card img {
+.card .img-holder {
   width: auto;
   height: 100%;
   max-width: 50%;
@@ -114,4 +126,20 @@ export default defineComponent({
 .card-text strong {
   font-weight: 600;
 }
+
+.f-btn {
+  background-color: transparent;
+  border: 2px solid #006400; /* dark green */
+  color: #006400;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.f-btn:hover {
+  background-color: #006400;
+  color: #fff;
+}
 </style>
+
+
+

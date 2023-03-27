@@ -49,7 +49,7 @@ export default defineComponent({
     },
     async createItem() {
       try {
-        await axiosInstance.post("api/v1/items", {
+        await axiosInstance.post("api/items", {
           briefDescription: this.briefDescription,
           fullDescription: this.fullDescription,
           price: this.price,
@@ -58,7 +58,6 @@ export default defineComponent({
         });
         console.log("Item created successfully!")
         console.log(this.categoryId)
-        // Redirect or show success message after creating the item
         router.push("/")
       } catch (error) {
         console.error("Error creating item:", error);

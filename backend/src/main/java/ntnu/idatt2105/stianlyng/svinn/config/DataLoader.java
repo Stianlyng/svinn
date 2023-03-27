@@ -52,7 +52,7 @@ public class DataLoader implements CommandLineRunner {
         loadCategories();
         loadLocations();
         loadUsers();
-        //loadItems();
+        loadItems();
         //loadBookmarks();
         //loadMessages();
     }
@@ -86,12 +86,19 @@ public class DataLoader implements CommandLineRunner {
     private void loadItems() {
         Location location = locationRepository.findById(1).orElse(null);
         User user = userRepository.findById(1).orElse(null);
-        User user2 = userRepository.findById(2).orElse(null);
         Category category = categoryRepository.findById(2).orElse(null);
         
         List<Item> items = Arrays.asList(
-                new Item(null, "sofa", "dritnice sofa", 100, LocalDateTime.now(),LocalDateTime.now(), category,location,user),
-                new Item(null, "sofaking", "enda nicere sofa", 100, LocalDateTime.now(),LocalDateTime.now(), category,location,user2)
+                new Item(null, "Invisible Glasses", "The perfect pair of glasses to see things that don't exist.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Time Machine", "Travel through time with our slightly malfunctioning time machine. Results may vary.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Telepathic TV", "Watch your favorite shows without a remote! Warning: May change channels based on your mood.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Alien Perfume", "Smell out of this world with our exclusive extraterrestrial fragrance.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Cloud Catcher", "Tired of sunny days? Catch your own personal cloud to follow you around.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Self-Playing Piano", "No musical talent? No problem! This piano plays itself, just sit back and enjoy.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Unicorn Slippers", "Feel magical every morning by slipping your feet into these cozy unicorn slippers.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Anti-Gravity Hat", "Defy gravity with this stylish hat. Warning: May cause sudden floating.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Eternal Ice Cream", "Satisfy your sweet tooth with our never-melting, always-delicious ice cream.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user),
+                new Item(null, "Giggle Gloves", "Brighten your day with these gloves that let out a giggle every time you give a high-five.", 100, LocalDateTime.now(), LocalDateTime.now(), category, location, user)
         );
         itemRepository.saveAll(items);
 
