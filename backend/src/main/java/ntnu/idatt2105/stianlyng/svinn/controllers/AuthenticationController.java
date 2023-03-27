@@ -20,12 +20,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Controller class for handling authentication requests such as registration, authentication and logout.
- * Handles requests to the /api/v1/auth path.
+ * Handles requests to the /api/auth path.
  * 
  * @author Stian Lyng
  */
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 

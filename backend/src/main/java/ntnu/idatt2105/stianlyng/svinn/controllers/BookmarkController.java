@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Controller class for managing bookmark-related requests.
  */
 @RestController
-@RequestMapping("/api/v1/bookmarks")
+@RequestMapping("/api/bookmarks")
 public class BookmarkController {
 
     @Autowired

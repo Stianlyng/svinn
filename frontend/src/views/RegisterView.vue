@@ -41,7 +41,7 @@ export default defineComponent({
   methods: {
     async register() {
       try {
-        const response = await axios.post("api/v1/auth/register", {
+        const response = await axios.post("api/auth/register", {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,

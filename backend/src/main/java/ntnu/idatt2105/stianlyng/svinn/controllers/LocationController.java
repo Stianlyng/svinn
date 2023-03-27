@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Controller class for managing location-related requests.
  */
 @RestController
-@RequestMapping("/api/v1/locations")
+@RequestMapping("/api/locations")
 public class LocationController {
 
     @Autowired

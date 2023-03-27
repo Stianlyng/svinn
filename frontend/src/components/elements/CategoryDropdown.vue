@@ -37,7 +37,7 @@ export default defineComponent({
   methods: {
     async fetchCategories() {
       try {
-        const response = await axiosInstance.get("api/v1/categories");
+        const response = await axiosInstance.get("api/categories");
         this.categories = response.data;
       } catch (error) {
         console.error("Error fetching categories:", error);

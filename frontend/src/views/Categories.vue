@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CategoryList apiEndpoint="api/v1/categories" />
+    <CategoryList apiEndpoint="api/categories" />
   </div>
 </template>
 

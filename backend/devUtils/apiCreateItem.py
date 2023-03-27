@@ -2,7 +2,7 @@
 import json
 import requests
 
-url = "http://localhost:8080/api/v1/items" 
+url = "http://localhost:8080/api/items" 
 headers = {"Content-Type": "application/json"}
 
 item_data = {

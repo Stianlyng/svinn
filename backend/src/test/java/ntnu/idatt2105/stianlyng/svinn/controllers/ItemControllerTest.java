@@ -54,7 +54,7 @@ class ItemControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String itemRequestJson = objectMapper.writeValueAsString(itemRequest);
     
-        mockMvc.perform(post("/api/v1/items")
+        mockMvc.perform(post("/api/items")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(itemRequestJson))
                 .andExpect(status().isCreated());

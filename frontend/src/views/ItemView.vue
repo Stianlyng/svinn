@@ -32,7 +32,7 @@ export default defineComponent({
     async fetchItem() {
       const itemId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/items/${itemId}`);
+        const response = await axios.get(`http://localhost:8080/api/items/${itemId}`);
         this.item = response.data;
       } catch (error) {
         console.error('Error fetching item:', error);

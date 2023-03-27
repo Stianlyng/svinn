@@ -49,7 +49,7 @@ export default defineComponent({
     },
     async createItem() {
       try {
-        await axiosInstance.post("api/v1/items", {
+        await axiosInstance.post("api/items", {
           briefDescription: this.briefDescription,
           fullDescription: this.fullDescription,
           price: this.price,

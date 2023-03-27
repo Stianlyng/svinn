@@ -37,7 +37,7 @@ class AuthenticationControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String registerRequestJson = objectMapper.writeValueAsString(registerRequest);
         
-        mockMvc.perform(post("/api/v1/auth/register")
+        mockMvc.perform(post("/api/auth/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(registerRequestJson))
                 .andExpect(status().isOk());
@@ -50,7 +50,7 @@ class AuthenticationControllerTest {
     //    ObjectMapper objectMapper = new ObjectMapper();
     //    String registerRequestJson = objectMapper.writeValueAsString(registerRequest);
     //
-    //    mockMvc.perform(post("/api/v1/auth/register")
+    //    mockMvc.perform(post("/api/auth/register")
     //            .contentType(MediaType.APPLICATION_JSON)
     //            .content(registerRequestJson))
     //            .andExpect(status().isOk());
@@ -58,7 +58,7 @@ class AuthenticationControllerTest {
     //    AuthenticationRequest authRequest = new AuthenticationRequest("mail2@asd.no", password);
     //    String authRequestJson = objectMapper.writeValueAsString(authRequest);
     //
-    //    mockMvc.perform(post("/api/v1/auth/authenticate")
+    //    mockMvc.perform(post("/api/auth/authenticate")
     //            .contentType(MediaType.APPLICATION_JSON)
     //            .content(authRequestJson))
     //            .andExpect(status().isOk());

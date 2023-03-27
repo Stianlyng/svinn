@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
  * Controller class for managing category-related requests.
  */
 @RestController
-@RequestMapping("/api/v1/categories")
+@RequestMapping("/api/categories")
 @AllArgsConstructor
 public class CategoryController {
 

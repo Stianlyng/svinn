@@ -51,7 +51,7 @@ export default defineComponent({
     },
     async addToFavourites(itemId: number) {
       try {
-        await axiosInstance.post(`/api/v1/bookmarks/${itemId}`);
+        await axiosInstance.post(`/api/bookmarks/${itemId}`);
         alert("Item added to favourites!");
       } catch (error) {
         console.error("Error adding item to favourites:", error);

@@ -52,33 +52,33 @@ messageBody = {
 
 ## REQUESTS
 
-token = requests.post("http://localhost:8080/api/v1/auth/register", json=registerBody).json()["token"]
+token = requests.post("http://localhost:8080/api/auth/register", json=registerBody).json()["token"]
 
 authHeader={"Authorization": f"Bearer {token}"}
 
 # Categories
-def categories(): return requests.get("http://localhost:8080/api/v1/categories", headers=authHeader).json()
-def addCategory(): return requests.post("http://localhost:8080/api/v1/categories", headers=authHeader, json=catBody).json()
-def deleteCategory(id): return requests.delete(f"http://localhost:8080/api/v1/categories/{id}", headers=authHeader)
-def updateCategory(id): return requests.put(f"http://localhost:8080/api/v1/categories/{id}", headers=authHeader, json=catBody).json()
+def categories(): return requests.get("http://localhost:8080/api/categories", headers=authHeader).json()
+def addCategory(): return requests.post("http://localhost:8080/api/categories", headers=authHeader, json=catBody).json()
+def deleteCategory(id): return requests.delete(f"http://localhost:8080/api/categories/{id}", headers=authHeader)
+def updateCategory(id): return requests.put(f"http://localhost:8080/api/categories/{id}", headers=authHeader, json=catBody).json()
 
 # Locations
-def locations(): return requests.get("http://localhost:8080/api/v1/locations", headers=authHeader).json()
-def addLocation(): return requests.post("http://localhost:8080/api/v1/locations", headers=authHeader, json=locBody).json()
-def deleteLocation(id): return requests.delete(f"http://localhost:8080/api/v1/locations/{id}", headers=authHeader)
-def updateLocation(id): return requests.put(f"http://localhost:8080/api/v1/locations/{id}", headers=authHeader, json=locUpdBody).json()
+def locations(): return requests.get("http://localhost:8080/api/locations", headers=authHeader).json()
+def addLocation(): return requests.post("http://localhost:8080/api/locations", headers=authHeader, json=locBody).json()
+def deleteLocation(id): return requests.delete(f"http://localhost:8080/api/locations/{id}", headers=authHeader)
+def updateLocation(id): return requests.put(f"http://localhost:8080/api/locations/{id}", headers=authHeader, json=locUpdBody).json()
 
 # Items
-def items(): return requests.get("http://localhost:8080/api/v1/items", headers=authHeader).json()
-def addItem(): return requests.post("http://localhost:8080/api/v1/items", headers=authHeader, json=itemBody).json()
+def items(): return requests.get("http://localhost:8080/api/items", headers=authHeader).json()
+def addItem(): return requests.post("http://localhost:8080/api/items", headers=authHeader, json=itemBody).json()
 
 # Bookmarks
-def bookmarks(): return requests.get("http://localhost:8080/api/v1/bookmarks", headers=authHeader).json()
-def addBookmark(): return requests.post("http://localhost:8080/api/v1/bookmarks", headers=authHeader, json=bookmarkBody).json()
+def bookmarks(): return requests.get("http://localhost:8080/api/bookmarks", headers=authHeader).json()
+def addBookmark(): return requests.post("http://localhost:8080/api/bookmarks", headers=authHeader, json=bookmarkBody).json()
 
 # Messages
-def messages(): return requests.get("http://localhost:8080/api/v1/messages", headers=authHeader).json()
-def addMessage(): return requests.post("http://localhost:8080/api/v1/messages", headers=authHeader, json=messageBody).json()
+def messages(): return requests.get("http://localhost:8080/api/messages", headers=authHeader).json()
+def addMessage(): return requests.post("http://localhost:8080/api/messages", headers=authHeader, json=messageBody).json()
 
 
 # Token

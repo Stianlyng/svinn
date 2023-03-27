@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * Controller class for handling Item-related requests, such as creation, deletion, and updating.
  */
 @RestController
-@RequestMapping("/api/v1/items")
+@RequestMapping("/api/items")
 public class ItemController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class ItemController {
     private BookmarkService bookmarkService;
 
     /**
-     * Creates a new Item object by handeling POST requests to /api/v1/items.
+     * Creates a new Item object by handeling POST requests to /api/items.
      * 
      * @param itemRequest an ItemRequestDTO object representing the item's information
      * @return a response enity with the new item and a status code
@@ -40,7 +40,7 @@ public class ItemController {
     }
 
     /**
-     * Gets all items by handeling GET requests to /api/v1/items.
+     * Gets all items by handeling GET requests to /api/items.
      * 
      * @return ResponseEntity with a list of all items and a status code.
      */
@@ -51,7 +51,7 @@ public class ItemController {
     }
     
     /**
-     * Gets all items belonging to the current user by handeling GET requests to /api/v1/items/user.
+     * Gets all items belonging to the current user by handeling GET requests to /api/items/user.
      * 
      * @return ResponseEntity with a list of all items belonging to the current user and a status code.
      */
@@ -62,7 +62,7 @@ public class ItemController {
     }
    
     /**
-     * Gets all items bookmarked by the current user by handeling GET requests to /api/v1/items/user/bookmarks.
+     * Gets all items bookmarked by the current user by handeling GET requests to /api/items/user/bookmarks.
      * 
      * @return ResponseEntity with a list of all items bookmarked by the current user and a status code.
      */
@@ -78,7 +78,7 @@ public class ItemController {
     }
 
     /**
-     * Get an item by its ID by handeling GET requests to /api/v1/items/{id}.
+     * Get an item by its ID by handeling GET requests to /api/items/{id}.
      * 
      * @param id an Integer representing the ID of the item to be retrieved
      * @return ResponseEntity with a list of all items and a status code.
@@ -90,7 +90,7 @@ public class ItemController {
     }
 
     /**
-     * Deletes an item by its ID by handeling DELETE requests to /api/v1/items/{itemId}.
+     * Deletes an item by its ID by handeling DELETE requests to /api/items/{itemId}.
      * 
      * @param itemId an Integer representing the ID of the item to be deleted
      * @return ResponseEntity with a status code indicating success or failure of the deletion attempt
@@ -104,7 +104,7 @@ public class ItemController {
 
     //todo; consider adding a child that extends ItemRequestDTO, and add the id there..
     /**
-     * Updates an item by its ID by handeling PUT requests to /api/v1/items/{itemId}.
+     * Updates an item by its ID by handeling PUT requests to /api/items/{itemId}.
      *
      * @param itemId
      * @param itemRequest
