@@ -16,7 +16,7 @@
       </div>
       <div>
         <label for="category">Category:</label>
-        <!--<category-dropdown @category-selected="setCategoryId" /> -->
+        <input type="number" step="1" id="category" v-model="categoryId" required />
       </div>
       <button type="submit">Create Item</button>
     </form>
@@ -25,8 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import axiosInstance from "@/axiosInstanceJson";
-//import CategoryDropdown from "@/components/elements/CategoryDropdown.vue";
+import axiosInstance from "@/axiosInstance";
 
 export default defineComponent({
   components: {
@@ -61,7 +60,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-  /* Add your styles here */
-</style>

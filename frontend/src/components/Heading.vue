@@ -6,33 +6,38 @@ defineProps<{
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      The most minimal listing humanly possible.
-    </h3>
-  </div>
+      <div class="typing"> {{ msg }}</div>
+      <div>asdasd</div>
+  </div>  
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
+.greetings {
+  display: flex;
+  flex-direction: row;
+  width: 100vh;
+  text-align: left;
 }
 
-h3 {
-  font-size: 1.2rem;
+.typing {
+  width: 39ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 1.2em;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
+@keyframes typing {
+  from {
+    width: 0
+  }
 }
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
   }
 }
 </style>

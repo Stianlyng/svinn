@@ -1,6 +1,10 @@
+<!--
+
+-->
 <template>
   <div class="items-container">
     <div class="card" v-for="item in items" :key="item['id']">
+      <img src="https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Placeholder Image">
       <div class="card-body">
         <h5 class="card-title">{{ item['briefDescription'] }}</h5>
         <p class="card-text">{{ item['fullDescription'] }}</p>
@@ -71,3 +75,5 @@ export default defineComponent({
   padding: 15px;
 }
 </style>
+
+

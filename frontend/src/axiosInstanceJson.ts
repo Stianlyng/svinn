@@ -2,6 +2,10 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "http://dev.stian.localhost:8080/", // API base URL
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    }
 });
 
 axiosInstance.interceptors.request.use((config) => {
