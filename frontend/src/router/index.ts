@@ -17,6 +17,7 @@ const router = createRouter({
     { path: "/register", name: "register", component: RegisterView },
     { path: "/login", name: "login", component: LoginView },
     { path: '/logout', name: 'logout', component: LogoutView }, // Add the LogoutView component here
+    {path: "/cat", name: "cat", component: () => import("../components/elements/CategoryDropdown.vue"), meta: { requiresAuth: true } },
   ],
 });
 
